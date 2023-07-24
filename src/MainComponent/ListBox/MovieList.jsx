@@ -1,14 +1,11 @@
-import { tempMovieData } from "../../tempMovieData";
-import { useState } from "react";
+/* eslint-disable react/prop-types */
 import Movie from "./Movie";
 
-export default function MovieList() {
-	const [movies, setMovies] = useState(tempMovieData);
-
+export default function MovieList({ movies }) {
 	return (
 		<ul className="list">
 			{movies?.map(movie => (
-				<Movie key={movie.imdbID} movie={movie}/>
+				<Movie movie={movie} key={movie.imdbID} />
 			))}
 		</ul>
 	);

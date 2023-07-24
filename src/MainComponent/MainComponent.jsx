@@ -1,10 +1,11 @@
 import ListBox from "./ListBox/ListBox";
 import WatchedBox from "./WatchedBox/WatchedBox";
 
-export default function MainComponent() {
+// eslint-disable-next-line react/prop-types
+export default function MainComponent({ movies }) {
 	return (
 		<main className="main">
-			<ListBox />
+			<ListBox movies={movies} />
 			<WatchedBox />
 		</main>
 	);
