@@ -1,0 +1,15 @@
+import { tempMovieData } from "../../tempMovieData";
+import { useState } from "react";
+import Movie from "./Movie";
+
+export default function MovieList() {
+	const [movies, setMovies] = useState(tempMovieData);
+
+	return (
+		<ul className="list">
+			{movies?.map(movie => (
+				<Movie key={movie.imdbID} movie={movie}/>
+			))}
+		</ul>
+	);
+}
