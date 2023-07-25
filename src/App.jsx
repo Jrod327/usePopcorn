@@ -3,11 +3,10 @@ import Search from "./NavBar/Search.jsx";
 import Logo from "./NavBar/Logo.jsx";
 import NumResults from "./NavBar/NumResults.jsx";
 import MainComponent from "./MainComponent/MainComponent.jsx";
-import ListBox from "./MainComponent/ListBox/ListBox.jsx";
-import WatchedBox from "./MainComponent/WatchedBox/WatchedBox.jsx";
 import MovieList from "./MainComponent/ListBox/MovieList.jsx";
 import Summary from "./MainComponent/WatchedBox/Summary.jsx";
 import WatchedMovieList from "./MainComponent/WatchedBox/WatchedMovieList.jsx";
+import Box from "./MainComponent/Box.jsx";
 import { tempMovieData } from "./tempMovieData.js";
 import { tempWatchedData } from "./tempWatchedData.js";
 import { useState } from "react";
@@ -24,14 +23,15 @@ export default function App() {
 				<Search query={query} setQuery={setQuery} />
 				<NumResults movies={movies} />
 			</NavBar>
+
 			<MainComponent>
-				<ListBox>
+				<Box>
 					<MovieList movies={movies} />
-				</ListBox>
-				<WatchedBox>
+				</Box>
+				<Box>
 					<Summary watched={watched} />
 					<WatchedMovieList watched={watched} />
-				</WatchedBox>
+				</Box>
 			</MainComponent>
 		</>
 	);
