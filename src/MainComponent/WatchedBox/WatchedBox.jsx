@@ -1,10 +1,7 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
-import { tempWatchedData } from "../../tempWatchedData";
-import Summary from "./Summary";
-import WatchedMovieList from "./WatchedMovieList";
 
-export default function WatchedBox() {
-	const [watched, setWatched] = useState(tempWatchedData);
+export default function WatchedBox({ children }) {
 	const [isOpen2, setIsOpen2] = useState(true);
 
 	return (
@@ -12,12 +9,7 @@ export default function WatchedBox() {
 			<button className="btn-toggle" onClick={() => setIsOpen2(open => !open)}>
 				{isOpen2 ? "–" : "+"}
 			</button>
-			{isOpen2 && (
-				<>
-					<Summary watched={watched} />
-					<WatchedMovieList watched={watched} />
-				</>
-			)}
+			{isOpen2 && children}
 		</div>
 	);
 }
