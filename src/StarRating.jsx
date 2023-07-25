@@ -13,7 +13,7 @@ const starContainerStyle = {
 };
 
 export default function StarRating({
-	maxStars = 5,
+	maxRating = 5,
 	color = "#FCC419",
 	size = 48,
 	className = "",
@@ -36,7 +36,7 @@ export default function StarRating({
 	return (
 		<div style={containerStyle} className={className}>
 			<div style={starContainerStyle}>
-				{Array.from({ length: maxStars }, (_, i) => (
+				{Array.from({ length: maxRating }, (_, i) => (
 					<Star
 						key={i}
 						onRate={() => handleRating(i + 1)}
@@ -49,7 +49,7 @@ export default function StarRating({
 				))}
 			</div>
 			<p style={textStyle}>
-				{messages.length === maxStars
+				{messages.length === maxRating
 					? messages[hoverRating ? hoverRating - 1 : rating - 1]
 					: hoverRating || rating || ""}
 			</p>
