@@ -21,11 +21,13 @@ export default function App() {
 	const [watched, setWatched] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const [isError, setIsError] = useState("");
+	const [selectedID, setSelectedID] = useState(null);
 
 	useEffect(() => {
 		async function fetchMovies() {
 			try {
 				setIsLoading(true);
+				setIsError("");
 				const res = await fetch(
 					`http://www.omdbapi.com/?i=tt3896198&apikey=${apiKey}&s=${query}`
 				);
@@ -45,6 +47,13 @@ export default function App() {
 				setIsLoading(false);
 			}
 		}
+
+		if (query.length < 3) {
+			setMovies([]);
+			setIsError("");
+			return;
+		}
+
 		fetchMovies();
 	}, [query]);
 
