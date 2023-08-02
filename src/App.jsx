@@ -14,11 +14,11 @@ import ErrorMessage from "./ErrorMessag.jsx";
 // import { tempWatchedData } from "./tempWatchedData.js";
 import { useState, useEffect } from "react";
 
-const apiKey = "cf7d3cb2";
+export const apiKey = "cf7d3cb2";
 
 export default function App() {
 	const [movies, setMovies] = useState([]);
-	const [query, setQuery] = useState("interstellar");
+	const [query, setQuery] = useState("");
 	const [watched, setWatched] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const [isError, setIsError] = useState("");
