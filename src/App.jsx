@@ -10,8 +10,6 @@ import MovieDetails from "./MainComponent/WatchedBox/MovieDetails.jsx";
 import Box from "./MainComponent/Box.jsx";
 import Loader from "./Loader.jsx";
 import ErrorMessage from "./ErrorMessag.jsx";
-// import { tempMovieData } from "./tempMovieData.js";
-// import { tempWatchedData } from "./tempWatchedData.js";
 import { useState, useEffect } from "react";
 
 export const apiKey = "cf7d3cb2";
@@ -32,13 +30,17 @@ export default function App() {
 		setSelectedID(null);
 	}
 
+	function handleWatched(movie) {
+		setWatched(watched => [...watched, movie]);
+	}
+
 	useEffect(() => {
 		async function fetchMovies() {
 			try {
 				setIsLoading(true);
 				setIsError("");
 				const res = await fetch(
-					`http://www.omdbapi.com/?i=tt3896198&apikey=${apiKey}&s=${query}`
+					`http://www.omdbapi.com/?apikey=${apiKey}&s=${query}`
 				);
 
 				if (!res.ok) throw new Error(res.status);
@@ -87,6 +89,8 @@ export default function App() {
 						<MovieDetails
 							selectedID={selectedID}
 							onCloseMovie={handleCloseMovie}
+							onAddWatched={handleWatched}
+							watched={watched}
 						/>
 					) : (
 						<>
