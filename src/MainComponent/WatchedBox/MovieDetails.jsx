@@ -49,6 +49,22 @@ export default function MovieDetails({
 
 	useEffect(
 		function () {
+			function callback(event) {
+				if (event.code === "Escape") {
+					onCloseMovie();
+				}
+			}
+			document.addEventListener("keydown", callback);
+
+			return function () {
+				document.removeEventListener("keydown", callback);
+			};
+		},
+		[onCloseMovie]
+	);
+
+	useEffect(
+		function () {
 			async function getMovieDetails() {
 				setIsLoading(true);
 				const res = await fetch(
@@ -64,8 +80,12 @@ export default function MovieDetails({
 	);
 
 	useEffect(
-		function () {
+		function handleChangeTitle() {
 			document.title = title ? `${title} | usePopcorn` : "usePopcorn";
+
+			return function resetTitle() {
+				document.title = "usePopcorn";
+			};
 		},
 		[title]
 	);
